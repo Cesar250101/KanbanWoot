@@ -1,5 +1,5 @@
 const CHATWOOT_URL = "https://chatwoot.method.cl";
-const ACCOUNT_ID = process.env.REACT_APP_CHATWOOT_ACCOUNT_ID;
+const ACCOUNT_ID = "1";
 const chatwootHeaders = {
   'Content-Type': 'application/json',
   'api_access_token': "LXfmT3Jaq4gcdN1r2JxLKc5w"
