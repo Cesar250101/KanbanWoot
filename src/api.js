@@ -32,8 +32,7 @@ async function chatwootFetch(endpoint, options = {}) {
     throw error;
   }
 }
-
-debugLog('api.js: módulo carregado');
+console.log('api.js: módulo carregado');
 
 // Retorna todos os contatos
 export async function getContacts() {
