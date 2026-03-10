@@ -1,4 +1,4 @@
-const CHATWOOT_URL = "https://chatwoot.method.cl/";
+const CHATWOOT_URL = "https://chatwoot.method.cl";
 const ACCOUNT_ID = process.env.REACT_APP_CHATWOOT_ACCOUNT_ID;
 const chatwootHeaders = {
   'Content-Type': 'application/json',
