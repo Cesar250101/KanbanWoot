@@ -1,4 +1,4 @@
-const CHATWOOT_URL = 'https://corsproxy.io/?https%3A%2F%2Fchatwoot.method.cl';
+const CHATWOOT_URL = '/chatwoot-api';
 const ACCOUNT_ID = "1";
 const chatwootHeaders = {
   'Content-Type': 'application/json',
