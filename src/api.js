@@ -1,5 +1,6 @@
 const CHATWOOT_URL = '/chatwoot-api';
-const ACCOUNT_ID = "1";
+const urlParams = new URLSearchParams(window.location.search);
+const ACCOUNT_ID = urlParams.get('account_id') || '1';
 const chatwootHeaders = {
   'Content-Type': 'application/json',
   'api_access_token': "LXfmT3Jaq4gcdN1r2JxLKc5w"
