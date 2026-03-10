@@ -1,3 +1,9 @@
+const CHATWOOT_URL = process.env.REACT_APP_CHATWOOT_URL;
+const ACCOUNT_ID = process.env.REACT_APP_CHATWOOT_ACCOUNT_ID;
+const chatwootHeaders = {
+  'Content-Type': 'application/json',
+  'api_access_token': process.env.REACT_APP_CHATWOOT_TOKEN
+};
 async function chatwootFetch(endpoint, options = {}) {
   const url = `${CHATWOOT_URL}/api/v1/accounts/${ACCOUNT_ID}${endpoint}`;
   console.log('chatwootFetch', url, options);
