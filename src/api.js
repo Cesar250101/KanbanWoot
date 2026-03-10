@@ -1,6 +1,6 @@
 async function chatwootFetch(endpoint, options = {}) {
   const url = `${CHATWOOT_URL}/api/v1/accounts/${ACCOUNT_ID}${endpoint}`;
-  debugLog('chatwootFetch', url, options);
+  console.log('chatwootFetch', url, options);
   try {
     const response = await fetch(url, { ...options, headers: chatwootHeaders });
     const responseText = await response.text();
@@ -21,14 +21,14 @@ async function chatwootFetch(endpoint, options = {}) {
         response: responseData,
         stack: (new Error()).stack
       };
-      debugLog('Detalhes do erro Chatwoot:', errorDetails);
+      console.log('Detalhes do erro Chatwoot:', errorDetails);
       const error = new Error(errorDetails.message);
       Object.assign(error, errorDetails);
       throw error;
     }
     return responseData;
   } catch (error) {
-    debugLog('Erro na requisição Chatwoot:', error);
+    console.log('Erro na requisição Chatwoot:', error);
     throw error;
   }
 }
@@ -36,19 +36,19 @@ console.log('api.js: módulo carregado');
 
 // Retorna todos os contatos
 export async function getContacts() {
-  debugLog('api.js: getContacts chamado');
+  console.log('api.js: getContacts chamado');
   try {
     const data = await chatwootFetch('/contacts');
     return data.payload || [];
   } catch (error) {
-    debugLog('Erro ao buscar contatos:', error);
+    console.log('Erro ao buscar contatos:', error);
     throw error;
   }
 }
 
 // Retorna todos os atributos customizados (lista) apenas do tipo contact_attribute
 export async function getCustomAttributes() {
-  debugLog('api.js: getCustomAttributes chamado');
+  console.log('api.js: getCustomAttributes chamado');
   try {
     // Busca todos os atributos customizados
     const data = await chatwootFetch('/custom_attribute_definitions');
@@ -59,33 +59,33 @@ export async function getCustomAttributes() {
       : [];
     return filtered;
   } catch (error) {
-    debugLog('Erro ao buscar atributos customizados:', error);
+    console.log('Erro ao buscar atributos customizados:', error);
     throw error;
   }
 }
 
 // Retorna um atributo customizado específico pelo ID
 export async function getCustomAttributeById(id) {
-  debugLog('api.js: getCustomAttributeById chamado', id);
+  console.log('api.js: getCustomAttributeById chamado', id);
   try {
     const data = await chatwootFetch(`/custom_attribute_definitions/${id}`);
     return data.payload || data; // pode vir como objeto direto
   } catch (error) {
-    debugLog('Erro ao buscar atributo customizado por ID:', error);
+    console.log('Erro ao buscar atributo customizado por ID:', error);
     throw error;
   }
 }
 
 // Atualiza o valor de um atributo customizado do contato
 export async function updateContactCustomAttribute(contactId, attributeKey, value) {
-  debugLog('api.js: updateContactCustomAttribute chamado', contactId, attributeKey, value);
+  console.log('api.js: updateContactCustomAttribute chamado', contactId, attributeKey, value);
   try {
     return await chatwootFetch(`/contacts/${contactId}`, {
       method: 'PUT',
       body: JSON.stringify({ custom_attributes: { [attributeKey]: value } })
     });
   } catch (error) {
-    debugLog('Erro ao atualizar atributo customizado:', error);
+    console.log('Erro ao atualizar atributo customizado:', error);
     throw error;
   }
 }
